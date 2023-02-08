@@ -1,0 +1,11 @@
+
+.container{
+    margin: 20px;
+}
+.mat-raised-button{
+    float: right;
+    margin-right:10px;
+}
+img{
+    height: 100px;
+}
