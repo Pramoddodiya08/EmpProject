@@ -6,7 +6,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { user } from '../datatype';
 import { DialogComponent } from '../dialog/dialog.component';
 import { EditDialogComponent } from '../edit-dialog/edit-dialog.component';
-import { EmpListService } from '../emp-list.service';
+import { EmpserviceService } from '../empservice.service';
 
 @Component({
   selector: 'app-home',
@@ -21,7 +21,7 @@ export class HomeComponent  {
   @ViewChild(MatSort) sort: MatSort | undefined;
   displayedColumns: string[] = ['image', 'firstName', 'lastName','email','Action'];
   dataSource:user['users']=[];
-  constructor(public dialog: MatDialog,private EmpData:EmpListService ){
+  constructor(public dialog: MatDialog,private EmpData:EmpserviceService ){
       this.EmpData.getData().subscribe((val:user['users'])=>{
         this.dataSource = val ;
          this.dataSource['users'] = new MatTableDataSource(this.dataSource.users); 
