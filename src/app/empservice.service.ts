@@ -10,10 +10,19 @@ import { user } from './datatype';
 export class EmpserviceService {
  
   constructor(private http:HttpClient){}
-  getData():Observable<user['users']>{
-    return this.http.get('https://dummyjson.com/users');
+  getData(){
+    return this.http.get('https://dummyjson.com/users/');
   }
   getUser(id :string){
     return this.http.get(`https://dummyjson.com/users/${id}`);
+  }
+  deleteUser(id: number): Observable<user> {
+    return this.http.delete<user>(`https://dummyjson.com/users/${id}`);
+  }
+  addUser(user: user): Observable<user> {
+    return this.http.post<user>(`https://dummyjson.com/users/add`, user);
+  }
+  updateUser(user: user): Observable<user> {
+    return this.http.patch<user>(`https://dummyjson.com/users/${user.id}`, user);
   }
 }

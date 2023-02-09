@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { user } from '../datatype';
+import { empnewService } from '../empnewService';
 
 @Component({
   selector: 'app-dialog',
@@ -18,7 +19,7 @@ export class DialogComponent  {
     email: new FormControl('',[Validators.required, Validators.email]),
     image: new FormControl('',[Validators.required])
   });
-  constructor( public dialogRef: MatDialogRef<DialogComponent> ){
+  constructor( public dialogRef: MatDialogRef<DialogComponent>,private empData:empnewService){
   }
   onselectFile(event:any){
     if (event.target.files && event.target.files[0]) {
@@ -30,9 +31,10 @@ export class DialogComponent  {
     }
   }
   onSubmit(data:any){
-    this.details = data;
-    this.details.image = this.url
-    this.dialogRef.close(this.details);
+    this.empData.postUser(data).subscribe((val)=>{
+      this.details= val;
+      this.details.image = this.url
+      this.dialogRef.close(this.details);
+    })
   }
-
 }
