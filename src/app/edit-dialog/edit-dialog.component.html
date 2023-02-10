@@ -3,15 +3,16 @@
 <h1>update Employee</h1>
 <hr>
 <form #empData="ngForm" (ngSubmit)="onSubmit(empData.value)">
-<mat-form-field>
+<mat-form-field appearance="outline">
   <mat-label>Enter First Name:</mat-label>
   <input matInput placeholder="Placeholder" ngModel="{{details.firstName}}" name="firstName" >
 </mat-form-field>&nbsp;&nbsp;
-<mat-form-field>
+
+<mat-form-field appearance="outline">
   <mat-label>Enter Last Name:</mat-label>
   <input matInput placeholder="Placeholder" ngModel="{{details.lastName}}" name="lastName">
 </mat-form-field><br>
-<mat-form-field>
+<mat-form-field appearance="outline">
   <mat-label>Enter Email:</mat-label>
   <input matInput placeholder="Placeholder" ngModel="{{details.email}}" name="email">
 </mat-form-field>

@@ -54,26 +54,31 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
+
+          <mat-form-field appearance="outline">
+            <mat-label>Outline form field</mat-label>
+            <input matInput placeholder="Placeholder" formControlName="firstName">
+          </mat-form-field> &nbsp;
+
+          <mat-form-field appearance="outline">
+            <mat-label>Outline form field</mat-label>
+            <input matInput placeholder="Placeholder" formControlName="lastName">
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Outline form field</mat-label>
+            <input matInput placeholder="Placeholder" formControlName="email">
+          </mat-form-field>&nbsp;&nbsp;&nbsp;
+
+          <img [src]="url" height="70px"><br>
           <div class="mb-3">
-            <label for="message-text" class="col-form-label">First Name:</label>
-            <input type="text" class="form-control" formControlName="firstName">
-          </div>
-          <div class="mb-3">
-            <label for="message-text" class="col-form-label">Last Name:</label>
-            <input type="text" class="form-control" formControlName="lastName">
-          </div>
-          <div class="mb-3">
-            <label for="message-text" class="col-form-label">Email:</label>
-            <input type="text" class="form-control" formControlName="email">
-          </div>
-          <div class="mb-3">
-            <label for="message-text" class="col-form-label">Image:</label>
+            
             <input type="file" class="form-control" (change)="onselectFile($event)" formControlName="image">
           </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="submit" class="btn btn-primary" [disabled]="!addUsers.valid">Save changes</button>
+          <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-danger" data-bs-dismiss="modal" [disabled]="!addUsers.valid">Save changes</button>
         </div>
       </form>
     </div>

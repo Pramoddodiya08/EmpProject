@@ -89,9 +89,9 @@ export class HomeComponent implements OnInit {
     }
   }
   onSubmit(data:any){
-    data.image= this.url;
+    data.image = this.url;
     this.empData.postUser(data).subscribe((val)=>{
-      this.dataSource['users'].data = [val].concat(this.dataSource['users'].data);
+     this.dataSource['users'].data = [val].concat(this.dataSource['users'].data);
     })
   }
 }
