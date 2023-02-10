@@ -23,7 +23,6 @@ export class EditDialogComponent implements OnInit {
   constructor(public dialogRef: MatDialogRef<EditDialogComponent>,@Inject(MAT_DIALOG_DATA) public data:any) {}
    
   ngOnInit(): void {
-    this.url = this.data.image
     this.details = this.data;
   }
   onSubmit(data:any){

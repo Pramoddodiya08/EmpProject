@@ -1,7 +1,7 @@
 <mat-toolbar>
  <h1>User List</h1>
 </mat-toolbar>
-<button (click)="addUser()" mat-raised-button color="warn" class="addbtn">Add User</button>
+<button data-bs-toggle="modal" data-bs-target="#exampleModal" class="addbtn btn btn-danger">Add User</button>
  <div class="m-3">
  <mat-form-field>
   <mat-label>Search here</mat-label>
@@ -13,7 +13,7 @@
 
     <ng-container matColumnDef="image">
       <th mat-header-cell *matHeaderCellDef mat-sort-header class="text-center"> Image </th>
-      <td mat-cell *matCellDef="let row"> <img src="{{row.image }}" height="50px" width="50px"></td>
+      <td mat-cell *matCellDef="let row"> <img src="{{row.image}}" height="50px" width="50px" ></td>
     </ng-container>
     <ng-container matColumnDef="firstName">
       <th mat-header-cell *matHeaderCellDef mat-sort-header class="text-center"> First Name </th>
@@ -42,4 +42,40 @@
   </table>
   <mat-paginator [pageSizeOptions]="[5,10,15]" aria-label="Select page of users"></mat-paginator>
 </div>
+</div>
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <form [formGroup]="addUsers" (ngSubmit)="onSubmit(addUsers.value)">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Add User</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="mb-3">
+            <label for="message-text" class="col-form-label">First Name:</label>
+            <input type="text" class="form-control" formControlName="firstName">
+          </div>
+          <div class="mb-3">
+            <label for="message-text" class="col-form-label">Last Name:</label>
+            <input type="text" class="form-control" formControlName="lastName">
+          </div>
+          <div class="mb-3">
+            <label for="message-text" class="col-form-label">Email:</label>
+            <input type="text" class="form-control" formControlName="email">
+          </div>
+          <div class="mb-3">
+            <label for="message-text" class="col-form-label">Image:</label>
+            <input type="file" class="form-control" (change)="onselectFile($event)" formControlName="image">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary" [disabled]="!addUsers.valid">Save changes</button>
+        </div>
+      </form>
+    </div>
+  </div>
 </div>
