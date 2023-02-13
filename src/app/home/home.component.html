@@ -1,1 +1,18 @@
-<H1>Home Working</H1>
+<div class="container">
+  <form [formGroup]="loginForm" (ngSubmit)="Onsubmit(loginForm.value)">
+    <div class="text-center my-3 formDiv">
+    <h4>LOGIN</h4>
+    <mat-form-field appearance="outline">
+      <mat-label>Enter Email</mat-label>
+      <input matInput formControlName="email">
+    </mat-form-field>
+    <br>
+    <mat-form-field appearance="outline">
+      <mat-label>Password</mat-label>
+      <input matInput formControlName="password">
+    </mat-form-field>
+    <br><br>
+    <button mat-raised-button color="warn" class="mb-2 sbtn" [disabled]="!loginForm.valid">Login</button>
+    </div>
+  </form>
+</div>

@@ -22,4 +22,8 @@ export class empnewService {
   updateUser(user: user): Observable<user> {
     return this.http.patch<user>(`http://localhost:3000/users/${user.id}`, user);
   }
+
+  loginUser(data:any){
+    return this.http.post('http://localhost:3000/login/',data);
+  }
 }
