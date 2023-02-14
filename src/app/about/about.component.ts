@@ -63,7 +63,7 @@ export class AboutComponent {
        data
       });
       dialogRef.afterClosed().subscribe(data => {
-          this.EmpData.updateUser(data).subscribe
+          this.EmpData.updateUser(data).subscribe();
           this.empData.updateUser(data).subscribe();  
       });
   }
