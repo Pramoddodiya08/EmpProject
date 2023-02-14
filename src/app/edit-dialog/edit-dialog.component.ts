@@ -1,10 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { inject } from '@angular/core/testing';
-import { EmailValidator, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { user } from '../datatype';
-import { EmpserviceService } from '../empservice.service';
-import { HomeComponent } from '../home/home.component';
 
 @Component({
   selector: 'app-edit-dialog',
@@ -40,8 +37,5 @@ export class EditDialogComponent implements OnInit {
         this.url = event.target.result;
       }
     }
-  }
-  Close(){
-    this.dialogRef.close();
   }
 }

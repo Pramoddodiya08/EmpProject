@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, Validators ,FormBuilder, FormGroup, AbstractControl} from '@angular/forms';
+import { FormControl, Validators, FormBuilder, FormGroup, AbstractControl } from '@angular/forms';
 import { Router } from '@angular/router';
 
 @Component({
@@ -7,8 +7,9 @@ import { Router } from '@angular/router';
   templateUrl: './contact.component.html',
   styleUrls: ['./contact.component.css']
 })
-export class ContactComponent  {
+export class ContactComponent {
 
+ 
   ContactForm !: FormGroup;
   submitted = false;
   constructor(private formBuilder: FormBuilder , private router:Router){
@@ -39,6 +40,6 @@ export class ContactComponent  {
       this.router.navigate(['home']);
     }
   }
-  }
-    
+}
+
 

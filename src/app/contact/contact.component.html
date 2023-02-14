@@ -1,7 +1,8 @@
+
  <div class="container">
     <div class="formDiv text-center">
         <form [formGroup]="ContactForm" (ngSubmit)="onSubmit()">
-            <h1 class="m-3 text-center">Form Details</h1>
+            <h1 class="pt-3 text-center">Form Details</h1>
 
             <div>
                 <mat-form-field appearance="outline">
@@ -88,7 +89,6 @@
                     && ContactForm.controls['dob'].errors" 
                     style="color: green;"> enter your dob</mat-hint>
                     <mat-hint *ngIf="submitted && f['dob'].errors?.['required']" style="color: green;">select Date</mat-hint>
-
                   </mat-form-field>
             
                 <label class="mx-3"> Gender :</label>
@@ -101,7 +101,7 @@
                     <mat-hint *ngIf="submitted && f['gender'].errors?.['required']" style="color: green;">select gender</mat-hint>
                 </mat-radio-group>
             </div>
-            <button type="submit" mat-raised-button color="warn" class="w-75">Submit</button>
+            <button type="submit" mat-raised-button color="warn" class="w-75 mb-3" >Submit</button>
         </form>
     </div>
-</div> 
+</div>  
