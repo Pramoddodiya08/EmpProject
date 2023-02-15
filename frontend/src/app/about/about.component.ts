@@ -3,7 +3,6 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
-import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { user } from '../datatype';
 import { EditDialogComponent } from '../edit-dialog/edit-dialog.component';
 import { empnewService } from '../empnewService';
@@ -21,7 +20,6 @@ export class AboutComponent {
   displayedColumns: string[] = ['image', 'firstName', 'lastName','email','Action'];
   dataSource:user['users']=[];
   @ViewChild(MatPaginator) paginator: MatPaginator | undefined;
-  image!: SafeUrl; 
 
   addUsers = new FormGroup({
     firstName: new FormControl('',[Validators.required]),
@@ -53,7 +51,6 @@ export class AboutComponent {
       this.empData.deleteUser(id).subscribe(()=>{
         this.dataSource['users'].data = this.dataSource['users'].data.filter((u:any)=> u.id !== id);
       });
-
   }
 
   editData(data:any){
