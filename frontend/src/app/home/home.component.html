@@ -12,8 +12,16 @@
       <input matInput formControlName="password">
     </mat-form-field>
     <br><br>
-    <button mat-raised-button color="warn" class="mb-3 sbtn" [disabled]="!loginForm.valid">Login</button>
-    <a routerLink="/formData">demoForm</a>
+    <button mat-raised-button color="warn" class="mb-3 sbtn" [disabled]="!loginForm.valid">Login</button><br>
+    <a routerLink="/formData">Demo Form</a>
     </div>
   </form>
+</div>
+
+
+<div>
+  <h4>Number of user Login</h4>
+  <ul *ngFor="let item of Data">
+    <li>{{item.email}}</li>
+  </ul>
 </div>

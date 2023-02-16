@@ -36,4 +36,14 @@ export class empnewService {
   deleteDemo(id:string){
     return this.http.delete(`http://localhost:3000/employee/${id}`);
   }
+
+  PostLogUser(data:any){
+    return this.http.post('http://localhost:3000/loginUser',data);
+  }
+  getLogUser(){
+    return this.http.get('http://localhost:3000/loginUser');
+  }
+  deleteLog(id:string){
+    return this.http.delete(`http://localhost:3000/loginUser/${id}`);
+  }
 }

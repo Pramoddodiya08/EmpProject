@@ -9,14 +9,10 @@
       </div>
     </form>
   </div>
+<div>
+  How many user Visited :
 
-  <div class="card mx-3 bg-info" style="width: 18rem;" *ngFor="let item of data">
-    <div class="card-body">
-      <h1 class="card-title text-danger">{{item.name}}</h1>
-      <p class="card-text">{{item.email}}</p>
-      <p class="card-text">{{item.mobile}}</p>
-      <div>
-      <button type="button" (click)="deleteUser(item._id)" class="btn btn-danger">Delete</button>
-    </div>
-    </div>
-  </div>
+  <ul *ngFor="let item of data">
+    <li>{{item.name}}</li>
+  </ul>
+</div>

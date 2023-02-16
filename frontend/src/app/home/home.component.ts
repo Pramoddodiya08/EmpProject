@@ -10,14 +10,28 @@ import { empnewService } from '../empnewService';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent  {
+  Data :any[]=[]
 loginForm = new FormGroup({
   email:new FormControl('',[Validators.required, Validators.email]),
   password:new FormControl('',[Validators.required]),
 });
-constructor(private empData:empnewService,private router:Router){}
+constructor(private empData:empnewService,private router:Router){
+  this.getUser();
+}
 Onsubmit(data:any){
-  this.empData.loginUser(data).subscribe((data)=>{
-    this.router.navigate(['about']);
-  })
+  this.empData.PostLogUser(data).subscribe(
+    (res)=>{
+      console.log(res); 
+      this.getUser();
+    }
+  )
+}
+
+getUser(){
+  this.empData.getLogUser().subscribe(
+    (res:any)=>{
+      this.Data = res; 
+    }
+  )
 }
 }

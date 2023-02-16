@@ -17,6 +17,7 @@ export class FormdataComponent implements OnInit {
   constructor(private dataSer:empnewService) {this.getUser(); }
 
   ngOnInit(): void {
+    this.getUser();
   }
   Onsubmit(data:any){
     this.dataSer.PostDemoUser(data).subscribe(
