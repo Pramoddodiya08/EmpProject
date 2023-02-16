@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { update } from '../datatype';
 import { empnewService } from '../empnewService';
 
 @Component({
@@ -8,6 +9,10 @@ import { empnewService } from '../empnewService';
   styleUrls: ['./formdata.component.css']
 })
 export class FormdataComponent implements OnInit {
+
+  showFormMode = true;
+  editMode = false;
+  editvalue !:update;
   demoform = new FormGroup({
     name : new FormControl('',[Validators.required]),
     email:new FormControl('',[Validators.required, Validators.email]),
@@ -21,12 +26,11 @@ export class FormdataComponent implements OnInit {
   }
   Onsubmit(data:any){
     this.dataSer.PostDemoUser(data).subscribe(
-      (res)=>{
+      (res:any)=>{
         console.log(res);
-      },(err)=>{
-        console.log(err);
+        this.demoform.reset();
       }
-    )
+    )   
   }
   getUser(){
     this.dataSer.getDemoUser().subscribe(
@@ -48,4 +52,29 @@ export class FormdataComponent implements OnInit {
     }
    )
   }
+
+  updateUser(data:any){
+    this.showFormMode = false
+    this.editMode = true;
+    this.demoform.patchValue(data); 
+    this.editvalue= data;
+  }
+
+  onEditData(edata:any){
+    this.editvalue.name = edata.name;
+    this.editvalue.email = edata.email;
+    this.editvalue.mobile = edata.mobile;
+    this.dataSer.updateDemo(this.editvalue).subscribe(
+      (res)=>{
+        console.log(res);
+        this.getUser();
+        this.demoform.reset();
+        this.editMode =false;
+        this.showFormMode=true;
+      }
+    )
+  }
+ reset(){
+  this.demoform.reset();
+ }
 }

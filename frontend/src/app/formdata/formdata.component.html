@@ -1,18 +1,51 @@
-<div class="container">
+<div class="container" *ngIf="showFormMode">
     <form [formGroup]="demoform" (ngSubmit)="Onsubmit(demoform.value)">
       <div class="text-center my-3 formDiv">
       <h4 class="pt-3">Demo Form</h4>
       <input type="text" placeholder="Enter Name" formControlName="name" class="form-control"><br>
       <input type="text" placeholder="Enter Email" formControlName="email" class="form-control"><br>
       <input type="text" placeholder="Enter Mobile" formControlName="mobile" class="form-control"><br>
+      <button mat-raised-button color="accent" class="mb-3 sbtn" type="submit" [disabled]="!demoform.valid">Login</button>
+      <button mat-raised-button color="basic" class="mb-3 sbtn" type="reset" (click)="reset()">Reset</button>
+      </div>
+    </form>
+  </div>
+<div>
+
+  <div class="container" *ngIf="!showFormMode">
+    <form [formGroup]="demoform" (ngSubmit)="onEditData(demoform.value)">
+      <div class="text-center my-3 formDiv">
+      <h4 class="pt-3">update Form</h4>
+      <input type="text" placeholder="Enter Name" formControlName="name" class="form-control"><br>
+      <input type="text" placeholder="Enter Email" formControlName="email" class="form-control"><br>
+      <input type="text" placeholder="Enter Mobile" formControlName="mobile" class="form-control"><br>
+      <button mat-raised-button color="basic" class="mb-3 sbtn" type="reset" (click)="reset()">Reset</button>
       <button mat-raised-button color="warn" class="mb-3 sbtn" type="submit" [disabled]="!demoform.valid">Login</button>
       </div>
     </form>
   </div>
 <div>
-  How many user Visited :
-
-  <ul *ngFor="let item of data">
-    <li>{{item.name}}</li>
-  </ul>
+<h1 class="text-center text-dark">HOW MANY USER VISITED</h1>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">name</th>
+      <th scope="col">email</th>
+      <th scope="col">mobile</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of data">
+      <th scope="row">{{item._id}}</th>
+      <td>{{item.name}}</td>
+      <td>{{item.email}}</td>
+      <td>{{item.mobile}}</td>
+      <td><button (click)="deleteUser(item._id)" class="btn btn-dark mx-3">delete</button>
+    <button type="button" (click)="updateUser(item)" class="btn btn-info">Edit</button>
+  </td>
+    </tr>
+  </tbody>
+</table>
 </div>

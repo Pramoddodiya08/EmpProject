@@ -60,23 +60,23 @@ router.get('/:id',(req,res)=>{
     }
 });
 
-// router.put('/:id',(req,res)=>{
+router.put('/:id',(req,res)=>{
 
-//     let emp = {
-//         email: req.body.email,
-//         password : req.body.password
-//     }
-    
-//     if(ObjectId.isValid(req.params.id)){
-//         user.findByIdAndUpdate(req.params.id,{$set:emp},{new:true},(err,doc)=>{
-//             if(err){
-//                 console.log(" Error in delete Data" + err);
-//             }else{
-//                 res.send(doc)
-//             }
-//         })
-//     }else{
-//         return res.status(400).send('No Data found')
-//     }
-// });
+    let emp = {
+        name : req.body.name,
+        email: req.body.email,
+        mobile : req.body.mobile
+    };
+    if(ObjectId.isValid(req.params.id)){
+        user.findByIdAndUpdate(req.params.id,{$set:emp},{new:true},(err,doc)=>{
+            if(err){
+                console.log(" Error in delete Data" + err);
+            }else{
+                res.send(doc)
+            }
+        })
+    }else{
+        return res.status(400).send('No Data found')
+    }
+});
 module.exports = router;

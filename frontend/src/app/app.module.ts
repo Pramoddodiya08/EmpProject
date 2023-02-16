@@ -13,12 +13,8 @@ import { MatInputModule } from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
 import {MatTableModule} from '@angular/material/table';
 import { HomeComponent } from './home/home.component';
-import { EmpDetailsComponent } from './emp-details/emp-details.component';
-import { EditDialogComponent } from './edit-dialog/edit-dialog.component';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import { ReactiveFormsModule } from '@angular/forms';
-import { AboutComponent } from './about/about.component';
-import { ContactComponent } from './contact/contact.component';
 import { HeaderComponent } from './header/header.component';
 import {MatSelectModule} from '@angular/material/select';
 import {MatRadioModule} from '@angular/material/radio';
@@ -29,10 +25,6 @@ import { FormdataComponent } from './formdata/formdata.component';
   declarations: [
     AppComponent,
     HomeComponent,
-    EmpDetailsComponent,
-    EditDialogComponent,
-    AboutComponent,
-    ContactComponent,
     HeaderComponent,
     FormdataComponent,
   ],
