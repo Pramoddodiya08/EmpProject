@@ -25,4 +25,15 @@ export class empnewService {
   loginUser(data:any){
     return this.http.post('http://localhost:3000/login/',data);
   }
+
+
+  PostDemoUser(data:any){
+    return this.http.post('http://localhost:3000/employee',data);
+  }
+  getDemoUser(){
+    return this.http.get('http://localhost:3000/employee');
+  }
+  deleteDemo(id:string){
+    return this.http.delete(`http://localhost:3000/employee/${id}`);
+  }
 }

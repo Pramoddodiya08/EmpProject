@@ -1,0 +1,22 @@
+<div class="container">
+    <form [formGroup]="demoform" (ngSubmit)="Onsubmit(demoform.value)">
+      <div class="text-center my-3 formDiv">
+      <h4 class="pt-3">Demo Form</h4>
+      <input type="text" placeholder="Enter Name" formControlName="name" class="form-control"><br>
+      <input type="text" placeholder="Enter Email" formControlName="email" class="form-control"><br>
+      <input type="text" placeholder="Enter Mobile" formControlName="mobile" class="form-control"><br>
+      <button mat-raised-button color="warn" class="mb-3 sbtn" type="submit" [disabled]="!demoform.valid">Login</button>
+      </div>
+    </form>
+  </div>
+
+  <div class="card mx-3 bg-info" style="width: 18rem;" *ngFor="let item of data">
+    <div class="card-body">
+      <h1 class="card-title text-danger">{{item.name}}</h1>
+      <p class="card-text">{{item.email}}</p>
+      <p class="card-text">{{item.mobile}}</p>
+      <div>
+      <button type="button" (click)="deleteUser(item._id)" class="btn btn-danger">Delete</button>
+    </div>
+    </div>
+  </div>
