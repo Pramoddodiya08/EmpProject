@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Subscription } from 'rxjs';
 import { update } from '../datatype';
 import { empnewService } from '../empnewService';
 
@@ -8,7 +9,7 @@ import { empnewService } from '../empnewService';
   templateUrl: './formdata.component.html',
   styleUrls: ['./formdata.component.css']
 })
-export class FormdataComponent implements OnInit {
+export class FormdataComponent {
 
   showFormMode = true;
   editMode = false;
@@ -16,18 +17,22 @@ export class FormdataComponent implements OnInit {
   demoform = new FormGroup({
     name : new FormControl('',[Validators.required]),
     email:new FormControl('',[Validators.required, Validators.email]),
-    mobile:new FormControl('',[Validators.required])
+    mobile:new FormControl('',[Validators.required]),
+    image:new FormControl('')
   });
   data :any[]=[];
-  constructor(private dataSer:empnewService) {this.getUser(); }
+  url='';
+  mySubscription !: Subscription;
+  constructor(private dataSer:empnewService) { this.getUser(); }
 
-  ngOnInit(): void {
-    this.getUser();
-  }
   Onsubmit(data:any){
+    console.log(data);
+    
     this.dataSer.PostDemoUser(data).subscribe(
       (res:any)=>{
         console.log(res);
+        this.data = res ;
+        this.getUser();
         this.demoform.reset();
       }
     )   
@@ -44,7 +49,7 @@ export class FormdataComponent implements OnInit {
     );
   }
   deleteUser(id:any){
-   this.dataSer.deleteDemo(id).subscribe(
+    this.dataSer.deleteDemo(id).subscribe(
     (res)=>{
       console.log(res);
     },(err)=>{
@@ -61,6 +66,7 @@ export class FormdataComponent implements OnInit {
   }
 
   onEditData(edata:any){
+    this.editvalue.image = edata.image;
     this.editvalue.name = edata.name;
     this.editvalue.email = edata.email;
     this.editvalue.mobile = edata.mobile;
@@ -74,7 +80,9 @@ export class FormdataComponent implements OnInit {
       }
     )
   }
+  
  reset(){
   this.demoform.reset();
  }
+ 
 }

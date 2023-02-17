@@ -18,7 +18,8 @@ router.post('/',(req,res)=>{
     let emp = new user({
         name : req.body.name,
         email: req.body.email,
-        mobile : req.body.mobile
+        mobile : req.body.mobile,
+        image : req.body.image
     });
 
     emp.save((err,doc)=>{
@@ -65,7 +66,8 @@ router.put('/:id',(req,res)=>{
     let emp = {
         name : req.body.name,
         email: req.body.email,
-        mobile : req.body.mobile
+        mobile : req.body.mobile,
+        image : req.body.image
     };
     if(ObjectId.isValid(req.params.id)){
         user.findByIdAndUpdate(req.params.id,{$set:emp},{new:true},(err,doc)=>{

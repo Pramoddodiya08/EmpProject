@@ -5,6 +5,7 @@
       <input type="text" placeholder="Enter Name" formControlName="name" class="form-control"><br>
       <input type="text" placeholder="Enter Email" formControlName="email" class="form-control"><br>
       <input type="text" placeholder="Enter Mobile" formControlName="mobile" class="form-control"><br>
+      <input type="text" placeholder="Enter image" formControlName="image" class="form-control"><br>
       <button mat-raised-button color="accent" class="mb-3 sbtn" type="submit" [disabled]="!demoform.valid">Login</button>
       <button mat-raised-button color="basic" class="mb-3 sbtn" type="reset" (click)="reset()">Reset</button>
       </div>
@@ -19,6 +20,7 @@
       <input type="text" placeholder="Enter Name" formControlName="name" class="form-control"><br>
       <input type="text" placeholder="Enter Email" formControlName="email" class="form-control"><br>
       <input type="text" placeholder="Enter Mobile" formControlName="mobile" class="form-control"><br>
+      <input type="text" placeholder="Enter image" formControlName="image" class="form-control"><br>
       <button mat-raised-button color="basic" class="mb-3 sbtn" type="reset" (click)="reset()">Reset</button>
       <button mat-raised-button color="warn" class="mb-3 sbtn" type="submit" [disabled]="!demoform.valid">Login</button>
       </div>
@@ -30,6 +32,7 @@
   <thead>
     <tr>
       <th scope="col">#</th>
+      <th scope="col">image</th>
       <th scope="col">name</th>
       <th scope="col">email</th>
       <th scope="col">mobile</th>
@@ -39,6 +42,7 @@
   <tbody>
     <tr *ngFor="let item of data">
       <th scope="row">{{item._id}}</th>
+      <td>{{item.image}}</td>
       <td>{{item.name}}</td>
       <td>{{item.email}}</td>
       <td>{{item.mobile}}</td>

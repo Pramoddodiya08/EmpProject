@@ -4,4 +4,5 @@ export class update{
     name!:string;
     email!:string;
     mobile!:number;
+  image!: any;
 }
